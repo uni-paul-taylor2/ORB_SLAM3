@@ -388,3 +388,10 @@ if(realsense2_FOUND)
             Examples_old/Stereo-Inertial/stereo_inertial_realsense_D435i.cc)
     target_link_libraries(stereo_inertial_realsense_D435i_old ${PROJECT_NAME})
 endif()
+
+install(TARGETS ORB_SLAM3
+    RUNTIME DESTINATION bin
+    LIBRARY DESTINATION lib
+    ARCHIVE DESTINATION lib
+)
+install(DIRECTORY ${PROJECT_SOURCE_DIR}/include/ DESTINATION include)
