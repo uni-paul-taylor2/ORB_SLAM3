@@ -384,9 +384,16 @@ if(realsense2_FOUND)
     target_link_libraries(stereo_inertial_realsense_D435i_old ${PROJECT_NAME})
 endif()
 
+#Install Rule
 install(TARGETS ORB_SLAM3
     RUNTIME DESTINATION bin
     LIBRARY DESTINATION lib
     ARCHIVE DESTINATION lib
 )
-install(DIRECTORY ${PROJECT_SOURCE_DIR}/include/ DESTINATION include)
+install(DIRECTORY ${PROJECT_SOURCE_DIR}/include/ DESTINATION include/${PROJECT_NAME}) #include/ORB_SLAM3
+
+#Uninstall Rule
+if(EXISTS "${CMAKE_BINARY_DIR}/install_manifest.txt")
+  configure_file("${CMAKE_CURRENT_SOURCE_DIR}/cmake_uninstall.cmake.in"
+                 "${CMAKE_BINARY_DIR}/cmake_uninstall.cmake" @ONLY)
+endif()
