@@ -397,3 +397,9 @@ if(EXISTS "${CMAKE_BINARY_DIR}/install_manifest.txt")
   configure_file("${CMAKE_CURRENT_SOURCE_DIR}/cmake_uninstall.cmake.in"
                  "${CMAKE_BINARY_DIR}/cmake_uninstall.cmake" @ONLY)
 endif()
+
+#for find_package
+configure_file(${CMAKE_SOURCE_DIR}/cmake/ORB_SLAM3Config.cmake.in
+               ${CMAKE_BINARY_DIR}/ORB_SLAM3Config.cmake @ONLY)
+install(FILES ${CMAKE_BINARY_DIR}/ORB_SLAM3Config.cmake
+        DESTINATION lib/cmake/ORB_SLAM3)
